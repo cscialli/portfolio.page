@@ -261,6 +261,11 @@
   // Initiales Update der Zeit und Intervall setzen
   updateTime();
   setInterval(updateTime, 1000);
+
+  function toggleMenu() {
+      const headerTitle = document.querySelector('.header-title');
+      headerTitle.style.display = headerTitle.style.display === 'flex' ? 'none' : 'flex';
+  }
   </script>
   </body>
   </html>
