@@ -28,69 +28,60 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-direction: column;
   }
-  .header-top {
+  .header-title {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
+      gap: 20px;
   }
-  .header-bottom {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
+  .header-title span {
+      transition: transform 0.3s ease;
   }
-  .header-image {
-      max-height: 50px;
-  }
-  .left-sidebar, main, .right-sidebar, .footer {
+  .left-sidebar, main, .right-sidebar {
       padding: 20px;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      overflow: hidden;
+      overflow-y: auto;
+      transition: all 0.5s ease;
   }
   .left-sidebar {
       background: linear-gradient(to right, #7fcba0, #2b7a77);
-      transform: scale(1);
   }
   main {
       background: linear-gradient(to right, #66c28b, #2b7a77);
-      transform: scale(1);
   }
   .right-sidebar {
       background: linear-gradient(to right, #4db976, #2b7a77);
-      transform: scale(1);
   }
   .footer {
       background: linear-gradient(to right, #34b063, #2b7a77);
+      padding: 20px;
       text-align: center;
       grid-column: 1 / 2;
-      transform: scale(1);
+      display: flex;
+      justify-content: space-between;
   }
-  .section-title {
-      font-size: 1.5em;
-      text-align: center;
-      cursor: pointer;
-  }
-  .content {
-      display: none;
-  }
-  header, .footer {
-      opacity: 1 !important;
-      transform: scale(1) !important;
+  .footer-time {
+      align-self: flex-start;
   }
   /* Hover-Effekt */
   .container > *:not(header):not(.footer):hover {
       opacity: 1 !important;
       transform: scale(1.05);
-      z-index: 1;
   }
   .container > *:not(header):not(.footer) {
       opacity: 0.5;
+      transform: scale(1);
   }
   .container > *:not(header):not(.footer):hover ~ * {
       opacity: 0.1;
   }
-  
+  .section-content {
+      display: none;
+  }
+  .container > *:not(header):not(.footer):hover .section-content {
+      display: block;
+  }
+  .container > *:not(header):not(.footer):hover .section-title {
+      display: none;
+  }
   /* Zusätzliche Stile für Links und Buttons */
   a {
       color: #0066cc;
@@ -154,195 +145,122 @@
       height: 400px;
       margin-top: 20px;
   }
-  /* Pop-up Fenster */
-  .popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    z-index: 2;
-  }
-
-  .popup-close {
-    display: block;
-    text-align: right;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
   </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
   <div class="comet"></div>
   <div class="comet"></div>
   <div class="comet"></div>
   <header>
-    <div class="header-top">
-      <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
-      <div>
-        <p id="current-time"></p>
-        <p id="visitor-count">Besucher: <span id="visitor-number">0</span></p>
-      </div>
-    </div>
-    <div class="header-bottom">
-      <div>Über mich</div>
-      <div>Projekte</div>
-      <div>Kontakt</div>
-    </div>
+  <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
+  <h1>Meine Portfolio Website</h1>
+  <div class="header-title">
+  <span id="header-about">Über mich</span>
+  <span id="header-projects">Projekte</span>
+  <span id="header-contact">Kontakt</span>
+  </div>
   </header>
-  <div class="left-sidebar fade-in" onclick="showPopup('popup-about')">
-    <div class="section-title">Über mich</div>
-  </div>
-  <main class="fade-in" onclick="showPopup('popup-projects')">
-    <div class="section-title">Projekte</div>
-  </main>
-  <div class="right-sidebar fade-in" onclick="showPopup('popup-contact')">
-    <div class="section-title">Kontakt</div>
-  </div>
-  <footer class="footer">
-    &copy; 2024 Christian Scialli. Alle Rechte vorbehalten.
-  </footer>
-</div>
-
-<div id="popup-about" class="popup">
-  <span class="popup-close" onclick="closePopup('popup-about')">&times;</span>
-  <h2>Über mich</h2>
+  <div class="left-sidebar fade-in" onmouseover="highlightHeader('about')" onmouseout="resetHeader()">
+  <h2 class="section-title">Über mich</h2>
+  <div class="section-content">
   <p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
   <ul>
-    <li>Hobbies</li>
-    <li>Interessen</li>
-    <li>Fähigkeiten</li>
+  <li>Hobbies</li>
+  <li>Interessen</li>
+  <li>Fähigkeiten</li>
   </ul>
   <!-- Weitere Inhalte hinzufügen -->
-</div>
-
-<h1>Meine Portfolio Website</h1>
-</header>
-<div class="left-sidebar fade-in">
-<h2>Über mich</h2>
-<p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
-<ul>
-<li>Hobbies</li>
-<li>Interessen</li>
-<li>Fähigkeiten</li>
-</ul>
-<!-- Weitere Inhalte hinzufügen -->
-</div>
-<main class="fade-in">
-<h2>Projekte</h2>
-<p>Hier kannst du deine Projekte vorstellen.</p>
-<div id="projects">
-<!-- Dynamisch geladene Projekte werden hier angezeigt -->
-</div>
-</main>
-<div class="right-sidebar fade-in">
-<h2>Kontakt</h2>
-<p>Hier kannst du deine Kontaktinformationen hinzufügen.</p>
-<form id="contact-form">
-<label for="name">Name:</label><br>
-<input type="text" id="name" name="name" required><br>
-<label for="email">Email:</label><br>
-<input type="email" id="email" name="email" required><br>
-<label for="message">Nachricht:</label><br>
-<textarea id="message" name="message" required></textarea><br>
-<button type="submit">Senden</button>
-</form>
-<p id="form-response"></p>
-</div>
-<footer class="footer">
-&copy; 2024 Dein Name. Alle Rechte vorbehalten.
-</footer>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-<script>
-
-// Beispiel für eine Leaflet-Karte
-
-var map = L.map('map').setView([46.948, 7.447], 13); // Bern als Startpunkt
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-
-}).addTo(map);
-
-// GitHub API Integration
-
-async function fetchGitHubRepos() {
-
-    const response = await fetch('https://api.github.com/users/cscialli/repos');
-
-    const repos = await response.json();
-
-    const projectsContainer = document.getElementById('projects');
-
-    repos.forEach(repo => {
-
-        const projectDiv = document.createElement('div');
-
-        projectDiv.classList.add('project');
-
-        projectDiv.innerHTML = `
-<h3>${repo.name}</h3>
-<p>${repo.description || 'Keine Beschreibung verfügbar'}</p>
-<a href="${repo.html_url}" target="_blank">Repository ansehen</a>
-
-        `;
-
-        projectsContainer.appendChild(projectDiv);
-
-    });
-
-}
-
-// Kontaktformular Verarbeiten
-
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-
-    const email = document.getElementById('email').value;
-
-    const message = document.getElementById('message').value;
-
-    // Hier könntest du die Daten an einen Server senden
-
-    // Zeige eine Bestätigungsmeldung an
-
-    const formResponse = document.getElementById('form-response');
-
-    formResponse.innerHTML = `Danke, ${name}! Deine Nachricht wurde gesendet.`;
-
-    formResponse.style.color = 'green';
-
-});
-
-// Uhrzeit aktualisieren
-function updateTime() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('current-time').textContent = `Uhrzeit: ${timeString}`;
-}
-setInterval(updateTime, 1000);
-updateTime();
-
-// Besucherzähler
-let visitorCount = 0;
-function updateVisitorCount() {
-    visitorCount += 1;
-    document.getElementById('visitor-number').textContent = visitorCount;
-}
-updateVisitorCount();
-
-// Beim Laden der Seite GitHub Repos abrufen
-
-fetchGitHubRepos();
-</script>
-</body>
-</html> 
+  </div>
+  </div>
+  <main class="fade-in" onmouseover="highlightHeader('projects')" onmouseout="resetHeader()">
+  <h2 class="section-title">Projekte</h2>
+  <div class="section-content">
+  <p>Hier kannst du deine Projekte vorstellen.</p>
+  <div id="projects">
+  <!-- Dynamisch geladene Projekte werden hier angezeigt -->
+  </div>
+  </div>
+  </main>
+  <div class="right-sidebar fade-in" onmouseover="highlightHeader('contact')" onmouseout="resetHeader()">
+  <h2 class="section-title">Kontakt</h2>
+  <div class="section-content">
+  <p>Hier kannst du deine Kontaktinformationen hinzufügen.</p>
+  <form id="contact-form">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="message">Nachricht:</label><br>
+  <textarea id="message" name="message" required></textarea><br>
+  <button type="submit">Senden</button>
+  </form>
+  <p id="form-response"></p>
+  </div>
+  </div>
+  <footer class="footer">
+  <div class="footer-time" id="footer-time"></div>
+  &copy; 2024 Dein Name. Alle Rechte vorbehalten.
+  </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <script>
+  // Beispiel für eine Leaflet-Karte
+  var map = L.map('map').setView([46.948, 7.447], 13); // Bern als Startpunkt
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  // GitHub API Integration
+  async function fetchGitHubRepos() {
+      const response = await fetch('https://api.github.com/users/dein-github-username/repos');
+      const repos = await response.json();
+      const projectsContainer = document.getElementById('projects');
+      repos.forEach(repo => {
+          const projectDiv = document.createElement('div');
+          projectDiv.classList.add('project');
+          projectDiv.innerHTML = `
+  <h3>${repo.name}</h3>
+  <p>${repo.description || 'Keine Beschreibung verfügbar'}</p>
+  <a href="${repo.html_url}" target="_blank">Repository ansehen</a>
+          `;
+          projectsContainer.appendChild(projectDiv);
+      });
+  }
+  // Kontaktformular Verarbeiten
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      // Hier könntest du die Daten an einen Server senden
+      // Zeige eine Bestätigungsmeldung an
+      const formResponse = document.getElementById('form-response');
+      formResponse.innerHTML = `Danke, ${name}! Deine Nachricht wurde gesendet.`;
+      formResponse.style.color = 'green';
+  });
+  // Beim Laden der Seite GitHub Repos abrufen
+  fetchGitHubRepos();
+  // Highlight Header-Titel beim Hover
+  function highlightHeader(section) {
+      document.getElementById('header-about').style.transform = section === 'about' ? 'scale(1.2)' : 'scale(1)';
+      document.getElementById('header-projects').style.transform = section === 'projects' ? 'scale(1.2)' : 'scale(1)';
+      document.getElementById('header-contact').style.transform = section === 'contact' ? 'scale(1.2)' : 'scale(1)';
+  }
+  // Reset Header-Titel
+  function resetHeader() {
+      document.getElementById('header-about').style.transform = 'scale(1)';
+      document.getElementById('header-projects').style.transform = 'scale(1)';
+      document.getElementById('header-contact').style.transform = 'scale(1)';
+  }
+  // Datum und Uhrzeit im Footer anzeigen
+  function updateTime() {
+      const now = new Date();
+      const formattedTime = now.toLocaleString('de-CH', { dateStyle: 'full', timeStyle: 'short' });
+      document.getElementById('footer-time').textContent = formattedTime;
+  }
+  // Initiales Update der Zeit und Intervall setzen
+  updateTime();
+  setInterval(updateTime, 1000);
+  </script>
+  </body>
+  </html>
