@@ -31,7 +31,7 @@ body, html {
 
 header, .footer {
 
-    background-color: #FFC1A1;
+    background-color: #c44b0f;
 
     grid-column: 1 / 4;
 
@@ -53,7 +53,7 @@ header, .footer {
 
 .left-sidebar {
 
-    background-color: #A1E0FF;
+    background-color: #065780;
 
     grid-row: 2 / 3;
 
@@ -67,7 +67,7 @@ header, .footer {
 
 main {
 
-    background-color: #FFFFA1;
+    background-color: #4d4d02;
 
     grid-row: 2 / 3;
 
@@ -81,7 +81,7 @@ main {
 
 .right-sidebar {
 
-    background-color: #A1FFC2;
+    background-color: #066e2b;
 
     grid-row: 2 / 3;
 
@@ -248,7 +248,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 async function fetchGitHubRepos() {
 
-    const response = await fetch('https://api.github.com/users/dein-github-username/repos');
+    const response = await fetch('https://api.github.com/users/cscialli/repos');
 
     const repos = await response.json();
 
