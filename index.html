@@ -24,7 +24,14 @@ body.dark-mode {
 header, .left-sidebar, main, .right-sidebar, .footer {
     transition: background 0.3s ease, color 0.3s ease;
 }
- 
+.container {
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      grid-template-columns: 1fr;
+      height: 100vh;
+      position: relative; 
+}
+
 header {
     background: linear-gradient(to right, #a8d5ba, #2b7a77);
     grid-column: 1 / 2;
@@ -32,7 +39,7 @@ header {
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 body.dark-mode header {
@@ -99,12 +106,12 @@ body.dark-mode .right-sidebar {
     background: linear-gradient(to right, #34b063, #2b7a77);
     padding: 10px;
     text-align: center;
-    grid-column: 3 / 4;
+    grid-column: 1 / 2;
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     z-index: 1000;
 }
  
@@ -122,8 +129,7 @@ body.dark-mode .footer {
 }
  
 .section-title {
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
+    writing-mode: sideways-lr;
     position: absolute;
     left: 0;
     top: 50%;
@@ -157,7 +163,16 @@ body.dark-mode .footer {
     flex: 1;
     opacity: 0.5;
 }
- 
+.container > *:not(header):not(.footer):hover {
+    opacity: 1 !important;
+    z-index: 1;
+}
+.container > *:not(header):not(.footer) {
+    opacity: 0.5;
+}
+.container > *:not(header):not(.footer):hover ~ * {
+    opacity: 0.1;
+} 
 /* Zusätzliche Stile für Links und Buttons */
 a {
     color: #0066cc;
@@ -204,7 +219,7 @@ button:hover {
 }
  
 .snowflake {
-    position: fixed;
+    position: absolute;
     top: -10px;
     background: white;
     border-radius: 50%;
@@ -292,7 +307,7 @@ button:hover {
     height: 50px;
     background: white;
     opacity: 0.8;
-    pointer-events: none;
+    pointer-events: auto;
 }
  
 /* Responsives Menü */
