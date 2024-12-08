@@ -7,128 +7,219 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <style>
-body, html {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
-}
-/* Grid Layout */
-.container {
-    display: grid;
-    grid-template-rows: auto auto auto auto auto;
-    grid-template-columns: 1fr;
-    height: 100vh;
-    position: relative; /* Für die Positionierung der Kometen */
-}
-header {
-    background: linear-gradient(to right, #a8d5ba, #2b7a77);
-    grid-column: 1 / 2;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.left-sidebar {
-    background: linear-gradient(to right, #7fcba0, #2b7a77);
-    padding: 20px;
-    overflow-y: auto;
-}
-main {
-    background: linear-gradient(to right, #66c28b, #2b7a77);
-    padding: 20px;
-    overflow-y: auto;
-}
-.right-sidebar {
-    background: linear-gradient(to right, #4db976, #2b7a77);
-    padding: 20px;
-    overflow-y: auto;
-}
-.footer {
-    background: linear-gradient(to right, #34b063, #2b7a77);
-    padding: 20px;
-    text-align: center;
-    grid-column: 1 / 2;
-}
-/* Hover-Effekt */
-.container > *:not(header):not(.footer):hover {
-    opacity: 1 !important;
-}
-.container > *:not(header):not(.footer) {
-    opacity: 0.5;
-}
-.container > *:not(header):not(.footer):hover ~ * {
-    opacity: 0.1;
-}
-/* Zusätzliche Stile für Links und Buttons */
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-button {
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-button:hover {
-    background-color: #004999;
-}
-/* Zusätzliche Klassen für spezifische Elemente */
-.project {
-    margin-bottom: 20px;
-}
-/* Animationen */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.fade-in {
-    animation: fadeIn 2s;
-}
-/* Kometen Animation */
-@keyframes comet {
-    0% {
-        transform: translateX(-100vw) translateY(-100vh);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100vw) translateY(100vh);
-        opacity: 0;
-    }
-}
-.comet {
-    position: absolute;
-    width: 10px;
-    height: 10px;
+  body, html {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f0f0;
+      overflow-x: hidden; /* Verhindert horizontales Scrollen */
+  }
+  /* Grid Layout */
+  .container {
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      grid-template-columns: 1fr;
+      height: 100vh;
+      position: relative; /* Für die Positionierung der Kometen */
+  }
+  header {
+      background: linear-gradient(to right, #a8d5ba, #2b7a77);
+      grid-column: 1 / 2;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+  }
+  .header-top {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+  }
+  .header-bottom {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+  }
+  .header-image {
+      max-height: 50px;
+  }
+  .left-sidebar, main, .right-sidebar, .footer {
+      padding: 20px;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow: hidden;
+  }
+  .left-sidebar {
+      background: linear-gradient(to right, #7fcba0, #2b7a77);
+      transform: scale(1);
+  }
+  main {
+      background: linear-gradient(to right, #66c28b, #2b7a77);
+      transform: scale(1);
+  }
+  .right-sidebar {
+      background: linear-gradient(to right, #4db976, #2b7a77);
+      transform: scale(1);
+  }
+  .footer {
+      background: linear-gradient(to right, #34b063, #2b7a77);
+      text-align: center;
+      grid-column: 1 / 2;
+      transform: scale(1);
+  }
+  .section-title {
+      font-size: 1.5em;
+      text-align: center;
+      cursor: pointer;
+  }
+  .content {
+      display: none;
+  }
+  header, .footer {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+  }
+  /* Hover-Effekt */
+  .container > *:not(header):not(.footer):hover {
+      opacity: 1 !important;
+      transform: scale(1.05);
+      z-index: 1;
+  }
+  .container > *:not(header):not(.footer) {
+      opacity: 0.5;
+  }
+  .container > *:not(header):not(.footer):hover ~ * {
+      opacity: 0.1;
+  }
+  
+  /* Zusätzliche Stile für Links und Buttons */
+  a {
+      color: #0066cc;
+      text-decoration: none;
+  }
+  a:hover {
+      text-decoration: underline;
+  }
+  button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+  }
+  button:hover {
+      background-color: #004999;
+  }
+  /* Zusätzliche Klassen für spezifische Elemente */
+  .project {
+      margin-bottom: 20px;
+  }
+  /* Animationen */
+  @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+  }
+  .fade-in {
+      animation: fadeIn 2s;
+  }
+  /* Kometen Animation */
+  @keyframes comet {
+      0% {
+          transform: translateX(-100vw) translateY(-100vh);
+          opacity: 1;
+      }
+      100% {
+          transform: translateX(100vw) translateY(100vh);
+          opacity: 0;
+      }
+  }
+  .comet {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: comet 3s linear infinite;
+  }
+  .comet:nth-child(2) {
+      animation-delay: 1s;
+  }
+  .comet:nth-child(3) {
+      animation-delay: 2s;
+  }
+  /* Leaflet-Karte */
+  #map {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+  }
+  /* Pop-up Fenster */
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    animation: comet 3s linear infinite;
-}
-.comet:nth-child(2) {
-    animation-delay: 1s;
-}
-.comet:nth-child(3) {
-    animation-delay: 2s;
-}
-/* Leaflet-Karte */
-#map {
-    width: 100%;
-    height: 400px;
-    margin-top: 20px;
-}
-</style>
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    z-index: 2;
+  }
+
+  .popup-close {
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  </style>
 </head>
 <body>
 <div class="container">
-<header>
-<img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <header>
+    <div class="header-top">
+      <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
+      <div>
+        <p id="current-time"></p>
+        <p id="visitor-count">Besucher: <span id="visitor-number">0</span></p>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div>Über mich</div>
+      <div>Projekte</div>
+      <div>Kontakt</div>
+    </div>
+  </header>
+  <div class="left-sidebar fade-in" onclick="showPopup('popup-about')">
+    <div class="section-title">Über mich</div>
+  </div>
+  <main class="fade-in" onclick="showPopup('popup-projects')">
+    <div class="section-title">Projekte</div>
+  </main>
+  <div class="right-sidebar fade-in" onclick="showPopup('popup-contact')">
+    <div class="section-title">Kontakt</div>
+  </div>
+  <footer class="footer">
+    &copy; 2024 Christian Scialli. Alle Rechte vorbehalten.
+  </footer>
+</div>
+
+<div id="popup-about" class="popup">
+  <span class="popup-close" onclick="closePopup('popup-about')">&times;</span>
+  <h2>Über mich</h2>
+  <p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
+  <ul>
+    <li>Hobbies</li>
+    <li>Interessen</li>
+    <li>Fähigkeiten</li>
+  </ul>
+  <!-- Weitere Inhalte hinzufügen -->
+</div>
+
 <h1>Meine Portfolio Website</h1>
 </header>
 <div class="left-sidebar fade-in">
@@ -231,6 +322,23 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     formResponse.style.color = 'green';
 
 });
+
+// Uhrzeit aktualisieren
+function updateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('current-time').textContent = `Uhrzeit: ${timeString}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// Besucherzähler
+let visitorCount = 0;
+function updateVisitorCount() {
+    visitorCount += 1;
+    document.getElementById('visitor-number').textContent = visitorCount;
+}
+updateVisitorCount();
 
 // Beim Laden der Seite GitHub Repos abrufen
 
