@@ -28,18 +28,46 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      z-index: 10;
   }
   .header-title {
       display: flex;
       gap: 20px;
   }
-  .header-title span {
+  .header-title a {
+      text-decoration: none;
+      color: white;
       transition: transform 0.3s ease;
+  }
+  .header-title a:hover {
+      transform: scale(1.2);
+  }
+  .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+  }
+  .hamburger-menu div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+  }
+
+  .section-title {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-size: 1.5rem;
+      margin-right: 20px;
   }
   .left-sidebar, main, .right-sidebar {
       padding: 20px;
       overflow-y: auto;
       transition: all 0.5s ease;
+      display: flex;
+      align-items: center;
   }
   .left-sidebar {
       background: linear-gradient(to right, #7fcba0, #2b7a77);
@@ -52,27 +80,18 @@
   }
   .footer {
       background: linear-gradient(to right, #34b063, #2b7a77);
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       grid-column: 1 / 2;
       display: flex;
       justify-content: space-between;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.8rem;
   }
-  .footer-time {
-      align-self: flex-start;
-  }
+ 
   /* Hover-Effekt */
-  .container > *:not(header):not(.footer):hover {
-      opacity: 1 !important;
-      transform: scale(1.05);
-  }
-  .container > *:not(header):not(.footer) {
-      opacity: 0.5;
-      transform: scale(1);
-  }
-  .container > *:not(header):not(.footer):hover ~ * {
-      opacity: 0.1;
-  }
   .section-content {
       display: none;
   }
@@ -139,33 +158,42 @@
   .comet:nth-child(3) {
       animation-delay: 2s;
   }
-  /* Leaflet-Karte */
-  #map {
-      width: 100%;
-      height: 400px;
-      margin-top: 20px;
+  
+  @media (max-width: 768px) {
+      .header-title {
+        display: none;
+      }
+      .hamburger-menu {
+        display: flex;
+      }
   }
   </style>
 </head>
+
 <body>
   <div class="container">
   <div class="comet"></div>
   <div class="comet"></div>
   <div class="comet"></div>
   <header>
-  <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
-  <h1>Meine Portfolio Website</h1>
-  <div class="header-title">
-  <span id="header-about">Über mich</span>
-  <span id="header-projects">Projekte</span>
-  <span id="header-contact">Kontakt</span>
-  </div>
+    <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
+    <h1>Meine Portfolio Website</h1>
+    <div class="header-title">
+      <a href="#about" id="header-about">Über mich</a>
+      <a href="#projects" id="header-projects">Projekte</a>
+      <a href="#contact" id="header-contact">Kontakt</a>
+    </div>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </header>
-  <div class="left-sidebar fade-in" onmouseover="highlightHeader('about')" onmouseout="resetHeader()">
-  <h2 class="section-title">Über mich</h2>
-  <div class="section-content">
-  <p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
-  <ul>
+  <div class="left-sidebar fade-in" id="about" onmouseover="highlightHeader('about')" onmouseout="resetHeader()">
+    <h2 class="section-title">Über mich</h2>
+    <div class="section-content">
+      <p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
+      <ul>
   <li>Hobbies</li>
   <li>Interessen</li>
   <li>Fähigkeiten</li>
@@ -205,14 +233,10 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
   <script>
-  // Beispiel für eine Leaflet-Karte
-  var map = L.map('map').setView([46.948, 7.447], 13); // Bern als Startpunkt
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+ 
   // GitHub API Integration
   async function fetchGitHubRepos() {
-      const response = await fetch('https://api.github.com/users/dein-github-username/repos');
+      const response = await fetch('https://api.github.com/users/cscialli/repos');
       const repos = await response.json();
       const projectsContainer = document.getElementById('projects');
       repos.forEach(repo => {
@@ -262,6 +286,7 @@
   updateTime();
   setInterval(updateTime, 1000);
 
+  // Toggle Hamburger Menu
   function toggleMenu() {
       const headerTitle = document.querySelector('.header-title');
       headerTitle.style.display = headerTitle.style.display === 'flex' ? 'none' : 'flex';
