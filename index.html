@@ -1,67 +1,191 @@
-<!DOCTYPE html> test
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holy Grail Layout</title>
+<title>Meine Portfolio Website</title>
 <style>
+
 body, html {
-margin: 0; /* Keinen externen Abstand */
-font-family: 'Roboto', sans-serif; /* Schöne, moderne Schrift */
+
+    margin: 0;
+
+    font-family: 'Roboto', sans-serif;
+
+    background-color: #f0f0f0; /* Leichter Grauton für den Hintergrund */
+
 }
+
 .container {
-display: grid;
-grid-template: auto 1fr auto / auto 1fr auto;
-height: 100vh;
+
+    display: grid;
+
+    grid-template: auto 1fr auto / auto 1fr auto;
+
+    height: 100vh;
+
 }
+
 header {
-background-color: #FFC1A1; /* pastelliges Orange */
-grid-column: 1 / 4;
-padding: 20px;
+
+    background-color: #FFC1A1;
+
+    grid-column: 1 / 4;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
 }
+
+.header-image {
+
+    max-height: 50px; /* Anpassung der Höhe des Header-Bildes */
+
+}
+
 .left-sidebar {
-background-color: #A1E0FF; /* pastelliges Blau */
-grid-row: 2 / 3;
-grid-column: 1 / 2;
-padding: 20px;
+
+    background-color: #A1E0FF;
+
+    grid-row: 2 / 3;
+
+    grid-column: 1 / 2;
+
+    padding: 20px;
+
+    overflow-y: auto; /* Scrollbar hinzufügen, falls nötig */
+
 }
+
 main {
-background-color: #FFFFA1; /* pastelliges Gelb */
-grid-row: 2 / 3;
-grid-column: 2 / 3;
-padding: 20px;
+
+    background-color: #FFFFA1;
+
+    grid-row: 2 / 3;
+
+    grid-column: 2 / 3;
+
+    padding: 20px;
+
+    overflow-y: auto; /* Scrollbar hinzufügen, falls nötig */
+
 }
+
 .right-sidebar {
-background-color: #A1FFC2; /* pastelliges Grün */
-grid-row: 2 / 3;
-grid-column: 3 / 4;
-padding: 20px;
+
+    background-color: #A1FFC2;
+
+    grid-row: 2 / 3;
+
+    grid-column: 3 / 4;
+
+    padding: 20px;
+
+    overflow-y: auto; /* Scrollbar hinzufügen, falls nötig */
+
 }
+
 footer {
-background-color: #FFC1A1; /* pastelliges Orange */
-grid-column: 1 / 4;
-padding: 20px;
+
+    background-color: #FFC1A1;
+
+    grid-column: 1 / 4;
+
+    padding: 20px;
+
+    text-align: center; /* Zentrierter Text */
+
+}
+
+/* Zusätzliche Stile für Links und Buttons */
+
+a {
+
+    color: #0066cc;
+
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    text-decoration: underline;
+
+}
+
+button {
+
+    background-color: #0066cc;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+}
+
+button:hover {
+
+    background-color: #004999;
+
 }
 </style>
 </head>
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Website</title>
-    <link rel="stylesheet" href="style.css"> <!-- Verlinkung zur CSS-Datei -->
-</head>
 <body>
-  <div class="container">
-    <header>
-      <img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
-      <h1>Meine Website</h1>
-    </header>
-    <div class="left-sidebar">Linke Seitenleiste</div>
-    <main>Hauptinhalt</main>
-    <div class="right-sidebar">Rechte Seitenleiste</div>
-    <footer>Footer</footer>
-  </div>
+<div class="container">
+<header>
+<img src="images/IMG-20200329-WA0011.jpg" alt="Header Bild" class="header-image">
+<h1>Meine Portfolio Website</h1>
+</header>
+<div class="left-sidebar">
+<h2>Über mich</h2>
+<p>Hier kannst du Informationen über dich selbst hinzufügen.</p>
+<ul>
+<li>Hobbies</li>
+<li>Interessen</li>
+<li>Fähigkeiten</li>
+</ul>
+<!-- Weitere Inhalte hinzufügen -->
+</div>
+<main>
+<h2>Projekte</h2>
+<p>Hier kannst du deine Projekte vorstellen.</p>
+<div class="project">
+<h3>Projekt 1</h3>
+<p>Beschreibung des Projekts.</p>
+</div>
+<div class="project">
+<h3>Projekt 2</h3>
+<p>Beschreibung des Projekts.</p>
+</div>
+<!-- Weitere Projekte hinzufügen -->
+</main>
+<div class="right-sidebar">
+<h2>Kontakt</h2>
+<p>Hier kannst du deine Kontaktinformationen hinzufügen.</p>
+<form>
+<label for="name">Name:</label><br>
+<input type="text" id="name" name="name"><br>
+<label for="email">Email:</label><br>
+<input type="email" id="email" name="email"><br>
+<label for="message">Nachricht:</label><br>
+<textarea id="message" name="message"></textarea><br>
+<button type="submit">Senden</button>
+</form>
+</div>
+<footer>
+&copy; 2024 Dein Name. Alle Rechte vorbehalten.
+</footer>
+</div>
 </body>
-</html>
+</html> 
