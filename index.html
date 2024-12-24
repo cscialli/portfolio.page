@@ -4,183 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio Website</title>
-<style>
-
-        body {
-
-            font-family: Arial, sans-serif;
-
-            margin: 0;
-
-            padding: 0;
-
-            transition: background-color 0.5s, color 0.5s;
-
-        }
-
-        .dark-mode {
-
-            background-color: #121212;
-
-            color: #ffffff;
-
-        }
-
-        header {
-
-            background: linear-gradient(to right, #50c878, #006400);
-
-            padding: 1em;
-
-            text-align: center;
-
-        }
-
-        nav {
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 1em;
-
-        }
-
-        nav a {
-
-            color: white;
-
-            text-decoration: none;
-
-            padding: 0.5em;
-
-            transition: transform 0.3s;
-
-        }
-
-        nav a:hover {
-
-            transform: scale(1.2);
-
-        }
-
-        .content {
-
-            padding: 2em;
-
-        }
-
-        .toggle-button {
-
-            position: absolute;
-
-            top: 1em;
-
-            right: 1em;
-
-            padding: 0.5em 1em;
-
-            background-color: #50c878;
-
-            color: white;
-
-            border: none;
-
-            cursor: pointer;
-
-        }
-
-        .gallery {
-
-            display: flex;
-
-            gap: 1em;
-
-            flex-wrap: wrap;
-
-        }
-
-        .gallery img {
-
-            width: 100px;
-
-            height: 100px;
-
-            object-fit: cover;
-
-            transition: transform 0.3s;
-
-        }
-
-        .gallery img:hover {
-
-            transform: scale(1.2);
-
-        }
-</style>
+<!-- Verknüpfung zur CSS-Datei -->
+<link rel="stylesheet" href="styles.css">
+<!-- Font Awesome for social icons -->
+<link rel="stylesheet" href="https://kit.fontawesome.com/a076d05399.css" crossorigin="anonymous">
 </head>
 <body>
 <header>
-<nav>
-<a href="#about">Über mich</a>
-<a href="#gallery">Galerie</a>
-<a href="#contact">Kontakt</a>
-</nav>
-<button class="toggle-button" onclick="toggleDarkMode()">Dark Mode</button>
+    <div class="logo" id="logo" onclick="window.location.reload();"></div>
+    <nav>
+        <a href="#about" class="nav-link">Über mich</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#gallery" class="nav-link">Galerie</a>
+        <a href="#contact" class="nav-link">Kontakt</a>
+    </nav>
+    <button class="toggle-button" onclick="toggleDarkMode()">🌙</button>
 </header>
 <div class="content">
-<section id="about">
-<h2>Über mich</h2>
-<p>Ich lerne Web Engineering und bin kein professioneller Webentwickler oder Informatiker.</p>
-</section>
-<section id="gallery">
-<h2>Galerie</h2>
-<div class="gallery">
-<img src="https://via.placeholder.com/100" alt="Bild 1">
-<img src="https://via.placeholder.com/100" alt="Bild 2">
-<img src="https://via.placeholder.com/100" alt="Bild 3">
+    <section id="about" class="section">
+        <h2 class="section-title">Über mich</h2>
+        <div class="section-content">
+            <p>Hallo! Ich bin kein professioneller Webentwickler, und das wird hier offensichtlich. Aber hey, wer braucht schon Perfektion, wenn man nostalgische 90er-Jahre-Vibes verbreiten kann?</p>
+            <p>Meine Reise in die Welt der Technologie begann mit Windows 97, und ich wollte unbedingt diesen Oldtimer-Charme auf meiner Website einfangen. Mit meinen nostalgischen Erfahrungen in den 90ern wollte ich die Magie dieser Ära zurückbringen.</p>
+            <p>Seit einigen Jahren bin ich in verschiedenen Funktionen in der IT, im Einkauf, in der Bildung und sogar als Tutor und Studierender von Digital Business und AI tätig. Mein EWEB-Dozent hat mir viele Hinweise gegeben, aber aufgrund meiner begrenzten Erfahrung konnte ich sie nur teilweise umsetzen - Übung macht eben den Meister.</p>
+            <p>Ich bin bestrebt, weiter an meinen Fähigkeiten zu arbeiten und freue mich darauf, zukünftige Entwicklungen zu schaffen, die nostalgische Blicke hervorrufen werden.</p>
+        </div>
+    </section>
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="section-content">
+            <div class="skills">
+                <div class="skill">JavaScript</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Python</div>
+                <div class="skill">Deutsch (DE)</div>
+                <div class="skill">Italienisch (IT)</div>
+                <div class="skill">Französisch (FR)</div>
+                <div class="skill">Englisch (EN)</div>
+                <div class="skill">Spanisch (ES)</div>
+                <div class="skill">Kochen</div>
+                <div class="skill">Ballsportarten</div>
+                <div class="skill">Lernen</div>
+                <div class="skill">Ferien</div>
+                <div class="skill">Wein</div>
+                <div class="skill">Essen</div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="section">
+        <h2 class="section-title">Galerie</h2>
+        <div class="section-content">
+            <div class="gallery">
+                <img src="https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-boca-juniors-1997-1606328093-52058.jpg" alt="Bild 1">
+                <img src="https://img.a.transfermarkt.technology/portrait/header/8024-1606322777.png?lm=1" alt="Bild 2">
+                <img src="https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-bei-der-wm-1994-1606331073-52061.jpg" alt="Bild 3">
+                <img src="https://tmssl.akamaized.net/images/foto/galerie/diego-armando-maradona-newells-old-boys-1604070107-50290.jpg" alt="Bild 4">
+                <img src="https://tmssl.akamaized.net/images/foto/galerie/maradona-und-pele-1988-1606329990-52059.jpg" alt="Bild 5">
+                <img src="https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-feiert-die-meisterschaft-1987-mit-napoli-1606325517-52056.jpg" alt="Bild 6">
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="section">
+        <h2 class="section-title">Kontakt</h2>
+        <div class="section-content">
+            <p>Besuche mein <a href="https://github.com/cscialli">GitHub Repository</a>.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/christian_scialli" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.linkedin.com/in/christian-scialli-b8a40520a/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
 </div>
-</section>
-<section id="contact">
-<h2>Kontakt</h2>
-<p>Besuche mein <a href="https://github.com/deinbenutzername">GitHub Repository</a>.</p>
-</section>
-<section id="api">
-<h2>Wetter API</h2>
-<p id="weather">Lade Wetterdaten...</p>
-</section>
-</div>
-<script>
-
-        function toggleDarkMode() {
-
-            document.body.classList.toggle('dark-mode');
-
-        }
- 
-        async function fetchWeather() {
-
-            try {
-
-                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=47.3769&longitude=8.5417&hourly=temperature_2m');
-
-                const data = await response.json();
-
-                const temperature = data.hourly.temperature_2m[0];
-
-                document.getElementById('weather').innerText = `Aktuelle Temperatur: ${temperature}°C`;
-
-            } catch (error) {
-
-                document.getElementById('weather').innerText = 'Fehler beim Laden der Wetterdaten.';
-
-            }
-
-        }
- 
-        fetchWeather();
-</script>
+<footer>
+    <p>&copy; 1997 Christian Scialli. Alle Rechte vorbehalten.</p>
+</footer>
+<!-- Verknüpfung zur JavaScript-Datei -->
+<script src="script.js"></script>
 </body>
 </html>
-
- 
